@@ -4,20 +4,22 @@ name: Super-Linter
 on:
   push: null
   pull_request: null
+permissions: {}
 
 jobs:
   build:
     name: Lint code base
     runs-on: ubuntu-latest
     permissions:
-     contents: read
-     packages: read
-     statuses: write
+      contents: read
+      packages: read
+      statuses: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
       - name: Run Super-Linter
-        uses: github/super-linter@v4
+        uses: github/super-linter@v5
         env:
-          DEFAULT_BRANCH: master  # Ganti ke 'master' jika repositori menggunakan branch default 'master'
+          DEFAULT_BRANCH: master  # pastikan indentasi benar di sini
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
